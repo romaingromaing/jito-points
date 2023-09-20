@@ -1,0 +1,5 @@
+[toolchain]
+channel = "1.69.0"
+components = ["rustfmt", "clippy"]
+
+# solana-install init 1.14.27
