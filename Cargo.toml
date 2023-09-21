@@ -7,6 +7,10 @@ edition = "2021"
 
 [dependencies]
 
+tokio = { version = "1", features = ["full"] }
+anyhow = "1.0"
+bytemuck = { version = "^1.7.2", features = ["min_const_generics"] }
+
 solana-rpc = "~1.16.7"
 solana-client = "~1.16.7"
 solana-account-decoder = "~1.16.7"
@@ -17,7 +21,7 @@ anchor-spl = "0.28.0"
 anchor-lang = "0.28.0"
 anchor-client = "0.28.0"
 
-mango-v4 = { git = "https://github.com/blockworks-foundation/mango-v4.git", branch = "update-solana-1-16-anchor-28", features = ["cpi"] }
+mango-v4 = { git = "https://github.com/blockworks-foundation/mango-v4.git", branch = "update-solana-1-16-anchor-28", features = ["client"] }
 fixed = { git = "https://github.com/blockworks-foundation/fixed.git", branch = "v1.11.0-borsh0_10-mango" }
 
 switchboard-program = "0.2.0"

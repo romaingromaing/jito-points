@@ -2616,6 +2616,8 @@ dependencies = [
  "anchor-client",
  "anchor-lang 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "anchor-spl 0.28.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "anyhow",
+ "bytemuck",
  "fixed",
  "mango-v4",
  "solana-account-decoder",
@@ -2626,6 +2628,7 @@ dependencies = [
  "switchboard-common",
  "switchboard-program",
  "switchboard-solana",
+ "tokio",
 ]
 
 [[package]]
@@ -2959,6 +2962,7 @@ dependencies = [
  "serum_dex",
  "solana-address-lookup-table-program",
  "solana-program",
+ "solana-sdk",
  "solana-security-txt",
  "static_assertions",
  "switchboard-program",
