@@ -9,7 +9,9 @@ use solana_client::{
 };
 use solana_sdk::pubkey;
 
+// metadata information can be found at: https://api.mngo.cloud/data/v4/group-metadata
 const JITOSOL_TOKEN_INDEX: u16 = 501;
+const GROUP: Pubkey = pubkey!("78b8f4cGCwmZ9ysPFMWLaLTkkaYnUjwMJYStWe5RTSSX");
 
 pub async fn fetch_mango_accounts_by_owner(
     rpc: &RpcClientAsync,
@@ -109,13 +111,12 @@ pub async fn fetch_jitosol_exposure(
 #[tokio::main]
 async fn main() {
     let program = mango_v4::ID;
-    let group = pubkey!("78b8f4cGCwmZ9ysPFMWLaLTkkaYnUjwMJYStWe5RTSSX");
     let owner_pk = pubkey!("Wallet Private Key Here");
     let rpc =
         RpcClientAsync::new("RPC HERE".to_string());
 
-    let jito_bank = fetch_jitosol_bank(&rpc, program, group).await.unwrap();
-    let jitosol_exposure = fetch_jitosol_exposure(&rpc, program, group, owner_pk, jito_bank)
+    let jito_bank = fetch_jitosol_bank(&rpc, program, GROUP).await.unwrap();
+    let jitosol_exposure = fetch_jitosol_exposure(&rpc, program, GROUP, owner_pk, jito_bank)
         .await
         .unwrap();
     println!(
