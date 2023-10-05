@@ -13,6 +13,23 @@ use solana_sdk::pubkey;
 const JITOSOL_TOKEN_INDEX: u16 = 501;
 const GROUP: Pubkey = pubkey!("78b8f4cGCwmZ9ysPFMWLaLTkkaYnUjwMJYStWe5RTSSX");
 
+#[tokio::main]
+async fn main() {
+    let program = mango_v4::ID;
+    let wallet_pk = pubkey!("WALLET PUBKEY HERE");
+    let rpc =
+        RpcClientAsync::new("RPC HERE".to_string());
+
+    let jito_bank = fetch_jitosol_bank(&rpc, program, GROUP).await.unwrap();
+    let jitosol_exposure = fetch_jitosol_exposure(&rpc, program, GROUP, wallet_pk, jito_bank)
+        .await
+        .unwrap();
+    println!(
+        "Mango accounts owned by {:?} have {:?} of JitoSol exposure",
+        wallet_pk, jitosol_exposure
+    );
+}
+
 pub async fn fetch_mango_accounts_by_owner(
     rpc: &RpcClientAsync,
     program: Pubkey,
@@ -108,19 +125,3 @@ pub async fn fetch_jitosol_exposure(
     Ok(jitosol_amount)
 }
 
-#[tokio::main]
-async fn main() {
-    let program = mango_v4::ID;
-    let owner_pk = pubkey!("Wallet Private Key Here");
-    let rpc =
-        RpcClientAsync::new("RPC HERE".to_string());
-
-    let jito_bank = fetch_jitosol_bank(&rpc, program, GROUP).await.unwrap();
-    let jitosol_exposure = fetch_jitosol_exposure(&rpc, program, GROUP, owner_pk, jito_bank)
-        .await
-        .unwrap();
-    println!(
-        "Mango accounts owned by {:?} have {:?} of JitoSol exposure",
-        owner_pk, jitosol_exposure
-    );
-}

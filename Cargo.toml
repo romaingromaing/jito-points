@@ -17,14 +17,7 @@ solana-account-decoder = "~1.16.7"
 solana-sdk = "~1.16.7"
 solana-logger = "~1.16.7"
 
-anchor-spl = "0.28.0"
 anchor-lang = "0.28.0"
-anchor-client = "0.28.0"
 
-mango-v4 = { git = "https://github.com/blockworks-foundation/mango-v4.git", branch = "update-solana-1-16-anchor-28", features = ["client"] }
+mango-v4 = { git = "https://github.com/blockworks-foundation/mango-v4.git", branch = "update-solana-1-16-anchor-28-mango-0.19", features = ["client"] }
 fixed = { git = "https://github.com/blockworks-foundation/fixed.git", branch = "v1.11.0-borsh0_10-mango" }
-
-switchboard-program = "0.2.0"
-# note: 0.8.19 seems broken
-switchboard-common = "=0.8.18"
-switchboard-v2 = { package = "switchboard-solana", version = "0.28" }
